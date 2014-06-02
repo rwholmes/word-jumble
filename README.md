@@ -1,7 +1,10 @@
-A program to solve a word jumble.
+Word Jumble
+===
 
-Initialization:
+This is a program that solves a word jumble (http://en.wikipedia.org/wiki/Jumble). The program uses ajax to load an external .txt file containing a dictionary.
 
-In order for the program to load the dictionary .txt file using ajax, a node server must be running.
+### Running your own instance of this repo
 
-Run 'nodemon server.js' from the root of this directory.
+1. Clone repo
+2. npm install
+3. nodemon server.js
