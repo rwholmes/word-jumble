@@ -5,40 +5,42 @@ Please implement the program in a language of your choice, but refrain from usin
 var dictionary = {};
 
 var compileDict = function() {
-	var url = 'http://localhost:3000/dictionary/temp-dictionary.txt';
+	var url = 'http://localhost:3000/dictionary/dictionary.txt';
 	$.get(url, function(data) {
 		var words = data.split('\n');
-		for (var i=0; i<4000; i++) {
-			var word = words[i] + '';
-			console.log(word);
+		for (var i=0; i<words.length; i++) {
+			var word = words[i].split('');
+			word.pop();
+			word = word.join('');
 			dictionary[word] = true;
 		}
+		console.log('Dictionary loaded');
 	});
-}
-
-var wordJumble = function(inputWord) {	
-	console.log('wordJumble');
-};
-	
+}	
 
 var getPermutations = function(string) {
-	var results = [];
+	var results = {};
 	var seen = {};
 	var chars = string.split('');
-	var current = [];
 
-	var recurse = function() {
+	var recurse = function(current) {
+		var current = current || [];
+		var char = '';
+		var word = '';
 		if (current.length === chars.length) {
 			return;
 		}
 
 		for (var i=0; i<chars.length; i++) {
-			var char = chars[i];
+			char = chars[i];
 			if (!seen[char]) {
 				current.push(char);
+				word = current.join('');
 				seen[char] = true;
-				results.push(current.join(''));
-				recurse();
+				if (dictionary[word]) {
+					results[word] = true;
+				}
+				recurse(current);
 				seen[char] = false;
 				current.pop();
 			}
@@ -46,7 +48,7 @@ var getPermutations = function(string) {
 	}
 
 	recurse();
-	return results;
+	return Object.keys(results);
 }
 
 
