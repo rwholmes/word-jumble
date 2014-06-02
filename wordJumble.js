@@ -26,6 +26,7 @@ var getPermutations = function(string) {
 	var recurse = function(current) {
 		var current = current || [];
 		var char = '';
+		var charHash = '';
 		var word = '';
 		if (current.length === chars.length) {
 			return;
@@ -33,15 +34,16 @@ var getPermutations = function(string) {
 
 		for (var i=0; i<chars.length; i++) {
 			char = chars[i];
-			if (!seen[char]) {
+			charHash = chars[i] + i;
+			if (!seen[charHash]) {
 				current.push(char);
 				word = current.join('');
-				seen[char] = true;
+				seen[charHash] = true;
 				if (dictionary[word]) {
 					results[word] = true;
 				}
 				recurse(current);
-				seen[char] = false;
+				seen[charHash] = false;
 				current.pop();
 			}
 		}
