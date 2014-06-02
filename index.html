@@ -4,10 +4,34 @@
     <title>Word Jumble</title>
 
     <script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="wordJumble.js"></script>
-     
+    <script type="text/javascript" src="wordJumble.js"></script> 
   </head>
   <body>
-    Word Jumbler
+    <h1>Word Jumbler</h1>
+    Enter a jumbled string:
+    <input type="input" name="scrambled"></input>
+    <button class="submit">Find words</button>
+
+    <div class="results">
+    	<h3>Results:</h3>
+    	<ul>
+    	</ul>
+    </div>
+	
+	<script>
+		$(document).ready(function(){
+			compileDict();
+			$('button').on('click', function(event) {
+				var inputString = $('input').val();
+				var words = getPermutations(inputString);
+				var $list = $('ul');
+				$list.empty();
+				for (var i=0; i<words.length; i++) {
+					$list.append('<li>' + words[i] + '</li>');
+				}
+				event.preventDefault();
+			})
+		});
+	</script> 
   </body>
 </html>
