@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Word jumbler",
   "dependencies": {
-    "express": "^4.1.0",
-    "body-parser": "^1.0.2"
+    "express": "^4.1.0"
   }
 }

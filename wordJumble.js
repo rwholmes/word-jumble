@@ -18,7 +18,7 @@ var compileDict = function() {
 	});
 }	
 
-var getPermutations = function(string) {
+var getJumbles = function(string) {
 	var results = {};
 	var seen = {};
 	var chars = string.split('');

@@ -23,7 +23,7 @@
 			compileDict();
 			$('button').on('click', function(event) {
 				var inputString = $('input').val();
-				var words = getPermutations(inputString);
+				var words = getJumbles(inputString);
 				var $list = $('ul');
 				$list.empty();
 				for (var i=0; i<words.length; i++) {
